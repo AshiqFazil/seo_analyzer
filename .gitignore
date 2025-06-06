@@ -1,14 +1,8 @@
-# Ignore Python cache
+
+backend/.env
 __pycache__/
-
-# Ignore node modules
 node_modules/
-
-# Ignore SQLite DBs
 *.sqlite3
-
-# Ignore log files
 *.log
 
-# Ignore environment secrets
-backend/.env
+
