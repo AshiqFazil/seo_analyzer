@@ -108,6 +108,7 @@ const Login = ({ onLogin }) => {
               className="form-input"
               required
               placeholder="Enter your username"
+                autoComplete="new-username"
             />
           </motion.div>
 
@@ -148,7 +149,7 @@ const Login = ({ onLogin }) => {
               className="form-input"
               required
               placeholder="Enter your password"
-              autoComplete="new-username"
+              
             />
           </motion.div>
 
