@@ -108,11 +108,6 @@ const Login = ({ onLogin }) => {
               className="form-input"
               required
               placeholder="Enter your username"
-<<<<<<< HEAD
-                autoComplete="new-username"
-=======
-              autoComplete="new-username"
->>>>>>> 8998309 (Fix: disable browser autofill again  on login form)
             />
           </motion.div>
 
@@ -153,10 +148,6 @@ const Login = ({ onLogin }) => {
               className="form-input"
               required
               placeholder="Enter your password"
-<<<<<<< HEAD
-=======
-              autoComplete="new-password"
->>>>>>> 8998309 (Fix: disable browser autofill again  on login form)
               
             />
           </motion.div>
