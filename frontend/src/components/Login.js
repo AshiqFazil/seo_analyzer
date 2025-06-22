@@ -91,7 +91,7 @@ const Login = ({ onLogin }) => {
           </motion.div>
         )}
 
-        <form onSubmit={handleSubmit} className="auth-form">
+        <form onSubmit={handleSubmit} className="auth-form" autoComplete="off">
           <motion.div 
             className="form-group"
             initial={{ opacity: 0, x: -20 }}
@@ -148,6 +148,7 @@ const Login = ({ onLogin }) => {
               className="form-input"
               required
               placeholder="Enter your password"
+              autoComplete="new-username"
             />
           </motion.div>
 
