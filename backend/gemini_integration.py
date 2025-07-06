@@ -59,7 +59,7 @@ class GeminiSEOAssistant:
 
         prompt_text = self._format_prompt(analysis_data)
         
-        # Debug: Print the prompt being sent
+        
         print("🔍 Debug - Sending prompt to Gemini:")
         print(f"Prompt length: {len(prompt_text)} characters")
 
@@ -72,7 +72,7 @@ class GeminiSEOAssistant:
                 }
             ],
             "generationConfig": {
-                "temperature": 0.3,  # Lower temperature for more consistent JSON
+                "temperature": 0.3,  
                 "topK": 40,
                 "topP": 0.95,
                 "maxOutputTokens": 2048,
@@ -101,7 +101,7 @@ class GeminiSEOAssistant:
 
             result = response.json()
             
-            # Extract the text response
+            
             if "candidates" in result and len(result["candidates"]) > 0:
                 candidate = result["candidates"][0]
                 if "content" in candidate and "parts" in candidate["content"]:
@@ -110,7 +110,7 @@ class GeminiSEOAssistant:
                     
                     # Try to parse JSON response
                     try:
-                        # Clean the response (remove markdown code blocks if present)
+                       
                         cleaned_response = ai_response.strip()
                         if cleaned_response.startswith("```json"):
                             cleaned_response = cleaned_response[7:]
@@ -120,7 +120,7 @@ class GeminiSEOAssistant:
                         
                         parsed_suggestions = json.loads(cleaned_response)
                         
-                        # Validate the structure
+                        
                         if not isinstance(parsed_suggestions.get("priority_issues"), list):
                             parsed_suggestions["priority_issues"] = []
                         if not isinstance(parsed_suggestions.get("quick_wins"), list):
@@ -135,7 +135,7 @@ class GeminiSEOAssistant:
                         print(f"❌ Failed to parse JSON response: {e}")
                         print(f"Raw response: {ai_response[:500]}...")
                         
-                        # Fallback: Try to extract basic information from text
+                       
                         return self._parse_text_fallback(ai_response)
                         
                 else:
@@ -159,7 +159,7 @@ class GeminiSEOAssistant:
         """Fallback method to extract basic info from text response"""
         print("🔄 Using text fallback parser...")
         
-        # Basic fallback suggestions
+        
         return {
             "priority_issues": [
                 {
@@ -199,12 +199,12 @@ class GeminiSEOAssistant:
             "overall_assessment": f"AI analysis temporarily unavailable ({error_message}). Please use the detailed metrics above to identify improvement areas."
         }
 
-# Test function to verify the integration
+
 def test_gemini_integration():
     """Test function to verify Gemini API is working"""
     assistant = GeminiSEOAssistant()
     
-    # Sample test data
+    
     test_data = {
         "title": {"text": "Test Website - Very Long Title That Might Be Too Long", "length": 52},
         "meta_description": {"text": "A test website", "length": 14},

@@ -13,7 +13,7 @@ class SEOAnalyzer:
         except OSError:
             print("Please install spaCy English model: python -m spacy download en_core_web_sm")
         
-        # Download NLTK data if not present
+        
         try:
             nltk.data.find('tokenizers/punkt')
         except LookupError:
@@ -45,7 +45,7 @@ class SEOAnalyzer:
             'readability': self._analyze_readability(soup)
         }
         
-        # Calculate overall SEO score
+       
         analysis['seo_score'] = self._calculate_seo_score(analysis)
         
         return analysis
@@ -91,7 +91,7 @@ class SEOAnalyzer:
         }
     
     def _analyze_content(self, soup):
-        # Remove script and style elements
+        
         for script in soup(["script", "style"]):
             script.decompose()
         

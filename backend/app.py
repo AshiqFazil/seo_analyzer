@@ -1,3 +1,4 @@
+from dotenv import load_dotenv
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import jwt
@@ -8,15 +9,17 @@ from seo_analyzer import SEOAnalyzer
 from gemini_integration import GeminiSEOAssistant
 import json
 
+load_dotenv()
+
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'your-secret-key-here'  # Change this in production
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'dev-secret')
+
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///seo_analyzer.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
 CORS(app)
 
-# Initialize analyzers
 seo_analyzer = SEOAnalyzer()
 try:
     gemini_assistant = GeminiSEOAssistant()
@@ -69,7 +72,7 @@ def login():
 
 @app.route('/api/analyze', methods=['POST'])
 def analyze_seo():
-    # Get token from header
+   
     token = request.headers.get('Authorization')
     if not token:
         return jsonify({'error': 'No token provided'}), 401
@@ -84,17 +87,17 @@ def analyze_seo():
     url = request.get_json()['url']
     
     try:
-        # Perform SEO analysis
+        
         print(f"🔍 Analyzing URL: {url}")
         analysis = seo_analyzer.analyze_page(url)
         print(f"✅ SEO analysis completed. Score: {analysis.get('seo_score', 'N/A')}")
         
-        # Get AI suggestions if available
+        
         if gemini_assistant:
             print("🤖 Getting AI suggestions...")
             ai_suggestions = gemini_assistant.generate_seo_suggestions(analysis)
             
-            # Debug: Check what we got from Gemini
+           
             print(f"🔍 AI suggestions type: {type(ai_suggestions)}")
             if isinstance(ai_suggestions, dict):
                 print(f"✅ AI suggestions is dict with keys: {list(ai_suggestions.keys())}")
@@ -104,7 +107,7 @@ def analyze_seo():
             analysis['ai_suggestions'] = ai_suggestions
         else:
             print("⚠️  Gemini assistant not available")
-            # Provide fallback structure
+            
             analysis['ai_suggestions'] = {
                 "priority_issues": [
                     {
@@ -123,7 +126,7 @@ def analyze_seo():
                 "overall_assessment": "Manual SEO analysis completed. Configure Gemini API for AI-powered suggestions."
             }
         
-        # Save analysis to database
+        
         seo_analysis = SEOAnalysis(
             user_id=user_id,
             url=url,

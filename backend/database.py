@@ -22,5 +22,5 @@ class SEOAnalysis(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     url = db.Column(db.String(500), nullable=False)
     seo_score = db.Column(db.Float)
-    analysis_data = db.Column(db.Text)  # JSON string
+    analysis_data = db.Column(db.Text)  
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
