@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { FaComments, FaTimes, FaPaperPlane, FaRobot, FaUser } from 'react-icons/fa';
+import { FaComments, FaTimes, FaPaperPlane, FaRobot } from 'react-icons/fa';
 import api from '../utils/api';
 
 const Chatbot = ({ username, seoReport }) => {
