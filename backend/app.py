@@ -8,6 +8,7 @@ from database import db, User, SEOAnalysis
 from seo_analyzer import SEOAnalyzer
 from gemini_integration import GeminiSEOAssistant
 import json
+from gemini_chatbot import GeminiChatbot
 
 load_dotenv()
 
@@ -26,6 +27,8 @@ try:
 except:
     gemini_assistant = None
     print("Gemini API not configured - AI suggestions will be limited")
+
+gemini_chatbot = GeminiChatbot()
 
 with app.app_context():
     db.create_all()
@@ -78,7 +81,7 @@ def analyze_seo():
         return jsonify({'error': 'No token provided'}), 401
     
     try:
-        token = token.split(' ')[1]  # Remove 'Bearer ' prefix
+        token = token.split(' ')[1] 
         data = jwt.decode(token, app.config['SECRET_KEY'], algorithms=['HS256'])
         user_id = data['user_id']
     except:
@@ -170,6 +173,27 @@ def get_analysis_history():
         })
     
     return jsonify(history)
+
+@app.route('/api/chatbot', methods=['POST'])
+def chatbot():
+    token = request.headers.get('Authorization')
+    if not token:
+        return jsonify({'error': 'No token provided'}), 401
+    try:
+        token = token.split(' ')[1]
+        data = jwt.decode(token, app.config['SECRET_KEY'], algorithms=['HS256'])
+        user_id = data['user_id']
+    except:
+        return jsonify({'error': 'Invalid token'}), 401
+    req_data = request.get_json()
+    user_message = req_data.get('message')
+    seo_report = req_data.get('seo_report')  
+    if not user_message:
+        return jsonify({'error': 'No message provided'}), 400
+    
+    
+    response = gemini_chatbot.ask(user_message)
+    return jsonify(response)
 
 if __name__ == '__main__':
     app.run(debug=True)

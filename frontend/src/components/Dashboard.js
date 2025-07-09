@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import SEOResults from './SEOResults';
 import api from '../utils/api';
+import Chatbot from './Chatbot';
 
 const Dashboard = ({ user, onLogout }) => {
   const [url, setUrl] = useState('');
@@ -38,6 +39,8 @@ const Dashboard = ({ user, onLogout }) => {
 
   return (
     <div className="dashboard">
+      {/* Floating Chatbot Widget */}
+      <Chatbot username={user.username} seoReport={results} />
       <header className="dashboard-header">
         <div className="header-content">
           <motion.div 
