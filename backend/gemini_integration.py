@@ -108,7 +108,7 @@ class GeminiSEOAssistant:
                     ai_response = candidate["content"]["parts"][0]["text"]
                     print(f"✅ Successfully got AI response ({len(ai_response)} characters)")
                     
-                    # Try to parse JSON response
+                    
                     try:
                        
                         cleaned_response = ai_response.strip()
