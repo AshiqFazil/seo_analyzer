@@ -7,13 +7,8 @@
 </div>
 
 <div align="center">
-  <h1>🚀 SEO Analyzer with AI Chatbot</h1>
+  <h1>🚀 GenAI-Powered SEO Analyzer</h1>
   <p><strong>Comprehensive SEO analysis tool powered by Google Gemini AI</strong></p>
-  
-  [![GitHub stars](https://img.shields.io/github/stars/yourusername/seo_analyzer?style=social)](https://github.com/yourusername/seo_analyzer)
-  [![GitHub forks](https://img.shields.io/github/forks/yourusername/seo_analyzer?style=social)](https://github.com/yourusername/seo_analyzer)
-  [![GitHub issues](https://img.shields.io/github/issues/yourusername/seo_analyzer)](https://github.com/yourusername/seo_analyzer/issues)
-  [![GitHub pull requests](https://img.shields.io/github/issues-pr/yourusername/seo_analyzer)](https://github.com/yourusername/seo_analyzer/pulls)
 </div>
 
 ---
@@ -54,6 +49,12 @@
 - **API Key Protection** - Environment variables for secure API management
 - **Database Storage** - SQLite database for user data and analysis history
 
+### 🗄️ Data Management
+- **User Accounts** - Secure user registration and profile management
+- **Analysis History** - Store and retrieve previous SEO analyses
+- **Data Persistence** - SQLite database for reliable data storage
+- **User Sessions** - Track user activity and analysis history
+
 ### 📱 User Experience
 - **Responsive Design** - Works perfectly on desktop and mobile
 - **Modern UI/UX** - Clean, intuitive interface with smooth animations
@@ -65,27 +66,24 @@
 ## 🛠️ Tech Stack
 
 ### Backend
-<div align="center">
-  <img src="https://img.shields.io/badge/Python-3.8+-blue?logo=python" alt="Python">
-  <img src="https://img.shields.io/badge/Flask-2.3+-000000?logo=flask" alt="Flask">
-  <img src="https://img.shields.io/badge/SQLAlchemy-ORM-29A4D3?logo=sqlalchemy" alt="SQLAlchemy">
-  <img src="https://img.shields.io/badge/BeautifulSoup-4.12-FF6B6B?logo=beautifulsoup" alt="BeautifulSoup">
-  <img src="https://img.shields.io/badge/spaCy-NLP-09A3D5?logo=spacy" alt="spaCy">
-  <img src="https://img.shields.io/badge/NLTK-NLP-FF6B6B?logo=nltk" alt="NLTK">
-</div>
+- **Python 3.8+** - Core programming language
+- **Flask** - Web framework for API development
+- **SQLAlchemy** - Database ORM and management
+- **SQLite** - Lightweight database for data storage
+- **BeautifulSoup** - HTML parsing and web scraping
+- **spaCy & NLTK** - Natural language processing
+- **Google Gemini API** - AI-powered analysis and suggestions
 
 ### Frontend
-<div align="center">
-  <img src="https://img.shields.io/badge/React-18.0+-61DAFB?logo=react" alt="React">
-  <img src="https://img.shields.io/badge/Axios-HTTP-5A29E4?logo=axios" alt="Axios">
-  <img src="https://img.shields.io/badge/Chart.js-Visualization-FF6384?logo=chartjs" alt="Chart.js">
-</div>
+- **React 18.0+** - Modern UI library
+- **Axios** - HTTP client for API communication
+- **Chart.js** - Data visualization and analytics
+- **CSS3** - Styling and animations
 
 ### AI & APIs
-<div align="center">
-  <img src="https://img.shields.io/badge/Google_Gemini-AI-4285F4?logo=google" alt="Google Gemini">
-  <img src="https://img.shields.io/badge/JWT-Authentication-000000?logo=jsonwebtokens" alt="JWT">
-</div>
+- **Google Gemini 1.5 Flash** - Advanced AI model for content generation
+- **JWT Authentication** - Secure user session management
+- **RESTful APIs** - Clean API architecture
 
 ---
 
@@ -314,11 +312,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 <div align="center">
   <p>Made with ❤️ by the SEO Analyzer Team</p>
   <p>
-    <a href="https://github.com/yourusername/seo_analyzer/issues">Report Bug</a>
+    <a href="#-features">Features</a>
     ·
-    <a href="https://github.com/yourusername/seo_analyzer/issues">Request Feature</a>
+    <a href="#-installation">Installation</a>
     ·
-    <a href="https://github.com/yourusername/seo_analyzer">View on GitHub</a>
+    <a href="#-usage">Usage</a>
   </p>
 </div>
 
