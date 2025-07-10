@@ -23,6 +23,7 @@
 - [📖 Usage](#-usage)
 - [🤖 AI Chatbot](#-ai-chatbot)
 - [🏗️ Project Structure](#️-project-structure)
+- [📚 Documentation](#-documentation)
 - [🔒 Security](#-security)
 - [🤝 Contributing](#-contributing)
 - [📄 License](#-license)
@@ -226,32 +227,53 @@ npm start
 
 ---
 
+## 📚 Documentation
+
+### Available Documentation
+- **[API Documentation](docs/API.md)** - Complete API reference with endpoints, request/response formats, and error handling
+- **[System Architecture](docs/ARCHITECTURE.md)** - Detailed system design, component architecture, and data flow diagrams
+- **[Development Guide](docs/DEVELOPMENT.md)** - Development setup, coding standards, testing, and contribution guidelines
+
+### Quick Links
+- [API Endpoints](docs/API.md#endpoints) - All available API routes
+- [Database Schema](docs/ARCHITECTURE.md#database-schema) - Database structure and relationships
+- [Development Setup](docs/DEVELOPMENT.md#getting-started) - How to set up development environment
+- [Contributing Guidelines](docs/DEVELOPMENT.md#contributing-guidelines) - How to contribute to the project
+
+---
+
 ## 🏗️ Project Structure
 
 ```
 seo_analyzer/
 ├── backend/
-│   ├── app.py                 # Main Flask application
-│   ├── gemini_integration.py  # SEO AI suggestions
-│   ├── gemini_chatbot.py     # AI chatbot
-│   ├── database.py           # Database models
-│   ├── seo_analyzer.py       # SEO analysis logic
+│   ├── app.py                 # Main Flask application with routes
+│   ├── gemini_integration.py  # Gemini AI for SEO suggestions
+│   ├── gemini_chatbot.py     # AI chatbot implementation
+│   ├── database.py           # SQLite database models
+│   ├── seo_analyzer.py       # Core SEO analysis logic
 │   ├── requirements.txt       # Python dependencies
-│   └── .env                   # Environment variables
+│   └── instance/             # SQLite database files
 ├── frontend/
 │   ├── public/
 │   │   └── index.html         # HTML entry point
 │   ├── src/
 │   │   ├── components/
-│   │   │   ├── Login.js       # Authentication
-│   │   │   ├── Dashboard.js   # Main interface
-│   │   │   ├── SEOResults.js  # Analysis results
-│   │   │   └── Chatbot.js    # AI chat interface
+│   │   │   ├── Login.js       # User authentication
+│   │   │   ├── Dashboard.js   # Main application interface
+│   │   │   ├── SEOResults.js  # SEO analysis results
+│   │   │   └── Chatbot.js    # AI chatbot interface
 │   │   ├── utils/
-│   │   │   └── api.js         # API utilities
-│   │   ├── App.js             # Main React app
-│   │   └── App.css            # Global styles
-│   └── package.json           # Node dependencies
+│   │   │   └── api.js         # API communication utilities
+│   │   ├── App.js             # Main React application
+│   │   └── App.css            # Global styles and animations
+│   └── package.json           # Node.js dependencies
+├── docs/                      # Documentation
+│   ├── API.md                # API documentation
+│   ├── ARCHITECTURE.md       # System architecture
+│   ├── DEVELOPMENT.md        # Development guide
+│   ├── USER_GUIDE.md         # User manual
+│   └── DEPLOYMENT.md         # Production deployment guide
 ├── README.md                  # Project documentation
 ├── LICENSE                    # MIT License
 └── start_app.bat             # Quick start script
