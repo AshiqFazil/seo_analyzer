@@ -94,12 +94,25 @@ const Login = ({ onLogin }) => {
         <form onSubmit={handleSubmit} className="auth-form" autoComplete="off">
           <motion.div 
             className="form-group"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.4 }}
+            initial={{ opacity: 0, x: -30, scale: 0.9 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            transition={{ 
+              delay: 0.4, 
+              duration: 0.6,
+              ease: [0.4, 0, 0.2, 1]
+            }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
           >
-            <label htmlFor="username">Username</label>
-            <input
+            <motion.label 
+              htmlFor="username"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+            >
+              Username
+            </motion.label>
+            <motion.input
               type="text"
               id="username"
               name="username"
@@ -108,18 +121,17 @@ const Login = ({ onLogin }) => {
               className="form-input"
               required
               placeholder="Enter your username"
+              whileFocus={{ scale: 1.02 }}
+              transition={{ duration: 0.2 }}
             />
           </motion.div>
 
           {!isLogin && (
-            <motion.div 
-              className="form-group"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.5 }}
-            >
-              <label htmlFor="email">Email</label>
-              <input
+            <div className="form-group">
+              <label htmlFor="email">
+                Email
+              </label>
+              <motion.input
                 type="email"
                 id="email"
                 name="email"
@@ -128,18 +140,33 @@ const Login = ({ onLogin }) => {
                 className="form-input"
                 required
                 placeholder="Enter your email"
+                whileFocus={{ scale: 1.02 }}
+                transition={{ duration: 0.2 }}
               />
-            </motion.div>
+            </div>
           )}
 
           <motion.div 
             className="form-group"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.6 }}
+            initial={{ opacity: 0, x: -30, scale: 0.9 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            transition={{ 
+              delay: 0.6, 
+              duration: 0.6,
+              ease: [0.4, 0, 0.2, 1]
+            }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
           >
-            <label htmlFor="password">Password</label>
-            <input
+            <motion.label 
+              htmlFor="password"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.7 }}
+            >
+              Password
+            </motion.label>
+            <motion.input
               type="password"
               id="password"
               name="password"
@@ -148,7 +175,8 @@ const Login = ({ onLogin }) => {
               className="form-input"
               required
               placeholder="Enter your password"
-              
+              whileFocus={{ scale: 1.02 }}
+              transition={{ duration: 0.2 }}
             />
           </motion.div>
 
@@ -156,11 +184,19 @@ const Login = ({ onLogin }) => {
             type="submit"
             className="auth-button"
             disabled={loading}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7 }}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
+            initial={{ opacity: 0, y: 30, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ 
+              delay: 0.7, 
+              duration: 0.6,
+              ease: [0.4, 0, 0.2, 1]
+            }}
+            whileHover={{ 
+              scale: 1.05,
+              y: -2,
+              transition: { duration: 0.2 }
+            }}
+            whileTap={{ scale: 0.95 }}
           >
             {loading ? (
               <span>

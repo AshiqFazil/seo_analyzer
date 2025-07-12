@@ -1,6 +1,6 @@
 # SEO Analyzer User Guide
 
-## Welcome to SEO Analyzer! 🚀
+## Welcome to SEO Analyzer! 
 
 SEO Analyzer is your AI-powered companion for comprehensive website SEO analysis. This guide will help you get the most out of our intelligent SEO analysis and chatbot features.
 
@@ -100,6 +100,13 @@ After each analysis, you'll receive:
 - **Implementation Tips** - How to implement changes
 - **Expected Impact** - What improvements to expect
 
+### Export Your Reports
+
+After completing an analysis, you can:
+- **Export to PDF** - Click "Export PDF" to generate a detailed report
+- **Print Reports** - Save or print your analysis for offline reference
+- **Share Results** - PDF reports can be shared with team members or clients
+
 ---
 
 ## AI Chatbot
@@ -121,10 +128,17 @@ Twinkle is your AI-powered SEO expert, available 24/7 to answer questions and pr
      - "What are the best SEO practices for 2024?"
      - "How can I improve my meta descriptions?"
 
-3. **Get Intelligent Responses**
+3. **Manage Your Chats**
+   - Click the sidebar icon to view chat history
+   - Create new chats with the "+" button
+   - Delete chats with the trash icon
+   - Switch between different conversations
+
+4. **Get Intelligent Responses**
    - Twinkle provides detailed, formatted answers
    - Responses include actionable advice
    - Context-aware suggestions based on your analysis
+   - Smooth typing animation for realistic feel
 
 ### Chatbot Features
 
@@ -132,6 +146,12 @@ Twinkle is your AI-powered SEO expert, available 24/7 to answer questions and pr
 - Powered by Google Gemini AI
 - SEO-specialized knowledge
 - Real-time, up-to-date information
+
+**Chat History Management**
+- All conversations are automatically saved
+- Access previous chats from the sidebar
+- Create new chats anytime
+- Delete unwanted conversations
 
 **Context Awareness**
 - Understands your current analysis
@@ -142,6 +162,16 @@ Twinkle is your AI-powered SEO expert, available 24/7 to answer questions and pr
 - Clean, readable responses
 - Bullet points and highlights
 - Professional formatting
+
+**Typing Animation**
+- Smooth typing animation for responses
+- Realistic conversation feel
+- Welcome message with user's name
+
+**Emoji Support**
+- Add emojis to your messages
+- Click the smile icon to open emoji picker
+- Express yourself with fun reactions
 
 ### Example Conversations
 
@@ -183,10 +213,12 @@ A: Twinkle will provide comprehensive mobile SEO best practices.
 
 ### Data Privacy
 
-- **Local Storage**: Your data is stored locally
+- **Local Storage**: Your chat history is stored locally in your browser
+- **No Server Storage**: Chat conversations never leave your device
 - **No Sharing**: We don't share your data with third parties
 - **Secure**: All data is encrypted and protected
 - **Control**: You can delete your account anytime
+- **Privacy**: Chat data is automatically cleared on logout
 
 ---
 
@@ -267,13 +299,13 @@ A: We recommend analyzing your website monthly to track improvements and identif
 A: Chrome, Firefox, Safari, and Edge are all supported.
 
 **Q: Do you store my website data?**
-A: Analysis results are stored locally in your account. We don't share or sell your data.
+A: Analysis results are stored in your account. Chat conversations are stored locally in your browser and are automatically cleared on logout. We don't share or sell your data.
 
 **Q: Can I export my analysis reports?**
-A: Currently, reports are viewable online. Export functionality is planned for future updates.
+A: Yes! You can export your SEO analysis reports as PDF. After completing an analysis, click the "Export PDF" button to generate and print a detailed report.
 
 **Q: How does the AI chatbot work?**
-A: Twinkle uses Google Gemini AI to provide intelligent, context-aware SEO advice.
+A: Twinkle uses Google Gemini AI to provide intelligent, context-aware SEO advice. All conversations are saved locally in your browser and can be accessed anytime. You can create multiple chats and manage your conversation history.
 
 ### SEO Questions
 
@@ -328,10 +360,10 @@ A: Focus on 3-5 primary keywords per page, with related long-tail keywords natur
 - Better mobile responsiveness
 
 ### Coming Soon
-- Export functionality for reports
 - Advanced analytics dashboard
 - Mobile app version
 - API access for developers
+- Enhanced export options
 
 ### Stay Updated
 - Check the application regularly for updates
@@ -340,7 +372,7 @@ A: Focus on 3-5 primary keywords per page, with related long-tail keywords natur
 
 ---
 
-**Thank you for using SEO Analyzer!** 🎉
+**Thank you for using SEO Analyzer!** 
 
 We hope this guide helps you get the most out of our AI-powered SEO analysis tools. If you have any questions not covered here, don't hesitate to ask Twinkle or reach out to our support team.
 

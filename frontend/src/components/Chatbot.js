@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { FaComments, FaTimes, FaPaperPlane, FaRobot, FaSmile, FaPlus, FaTrash, FaHistory } from 'react-icons/fa';
 import api from '../utils/api';
 
@@ -12,40 +12,19 @@ const Chatbot = ({ username, seoReport }) => {
   const [chatHistory, setChatHistory] = useState([]);
   const [currentChatId, setCurrentChatId] = useState(null);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [welcomeShown, setWelcomeShown] = useState(false);
   const messagesEndRef = useRef(null);
 
   
-  useEffect(() => {
-    const savedHistory = localStorage.getItem(`chat_history_${username}`);
-    if (savedHistory) {
-      try {
-        const history = JSON.parse(savedHistory);
-        setChatHistory(history || []);
-        
-        if (history && history.length > 0) {
-          const mostRecentChat = history[history.length - 1];
-          setCurrentChatId(mostRecentChat.id);
-          setMessages(mostRecentChat.messages || []);
-        } else {
-          createNewChat();
-        }
-      } catch (error) {
-        console.error('Error loading chat history:', error);
-        setChatHistory([]);
-        createNewChat();
-      }
-    } else {
-      setChatHistory([]);
-      createNewChat();
-    }
-  }, [username]);
 
-  
+
   useEffect(() => {
     if (chatHistory && chatHistory.length > 0) {
       localStorage.setItem(`chat_history_${username}`, JSON.stringify(chatHistory));
+      console.log('Chat history saved:', chatHistory.length, 'chats');
     }
   }, [chatHistory, username]);
+
 
   
   useEffect(() => {
@@ -54,7 +33,7 @@ const Chatbot = ({ username, seoReport }) => {
     }
   }, [messages, open]);
 
-  const generateChatName = (messages) => {
+  const generateChatName = useCallback((messages) => {
     if (!messages || messages.length === 0) return 'New Chat';
     
     
@@ -65,22 +44,92 @@ const Chatbot = ({ username, seoReport }) => {
     
     const shortName = text.length > 30 ? text.substring(0, 30) + '...' : text;
     return shortName;
-  };
+  }, []);
 
-  const createNewChat = () => {
+
+
+  const updateCurrentChat = useCallback((newMessages) => {
+    setChatHistory(prev => 
+      (prev || []).map(chat => 
+        chat.id === currentChatId 
+          ? { 
+              ...chat, 
+              messages: newMessages,
+              name: generateChatName(newMessages)
+            }
+          : chat
+      )
+    );
+  }, [currentChatId, generateChatName]);
+
+  const createNewChat = useCallback(() => {
     const newChatId = Date.now().toString();
+    const welcomeText = `Hi ${username}, I'm Twinkle, your AI SEO assistant. How can I help you today?`;
+    const welcomeMsg = { sender: 'bot', text: '', isTyping: true };
+    
     const newChat = {
       id: newChatId,
       name: 'New Chat',
-      messages: [],
+      messages: [welcomeMsg],
       createdAt: new Date().toISOString()
     };
     
     setChatHistory(prev => [...(prev || []), newChat]);
     setCurrentChatId(newChatId);
-    setMessages([]);
+    setMessages([welcomeMsg]);
     setShowSidebar(false);
-  };
+    
+    setTimeout(() => {
+      const animateWelcomeMessage = async () => {
+        const words = welcomeText.split(' ');
+        let typedText = '';
+        
+        for (let i = 0; i < words.length; i++) {
+          typedText += (i > 0 ? ' ' : '') + words[i];
+          const typingMsg = { sender: 'bot', text: typedText, isTyping: true };
+          setMessages([typingMsg]);
+          await new Promise(resolve => setTimeout(resolve, 40 + Math.random() * 40));
+        }
+        
+        const finalMsg = { sender: 'bot', text: welcomeText, isTyping: false };
+        setMessages([finalMsg]);
+      };
+      
+      animateWelcomeMessage();
+    }, 300);
+  }, [username]);
+
+  useEffect(() => {
+    const savedHistory = localStorage.getItem(`chat_history_${username}`);
+    console.log('Loading chat history for:', username, 'Found:', !!savedHistory);
+    if (savedHistory) {
+      try {
+        const history = JSON.parse(savedHistory);
+        console.log('Loaded chat history:', history.length, 'chats');
+        setChatHistory(history || []);
+        
+        if (history && history.length > 0) {
+          const mostRecentChat = history[history.length - 1];
+          setCurrentChatId(mostRecentChat.id);
+          setMessages(mostRecentChat.messages || []);
+        } else {
+          setChatHistory([]);
+          setMessages([]);
+          setCurrentChatId(null);
+        }
+      } catch (error) {
+        console.error('Error loading chat history:', error);
+        setChatHistory([]);
+        setMessages([]);
+        setCurrentChatId(null);
+      }
+    } else {
+      console.log('No saved chat history found');
+      setChatHistory([]);
+      setMessages([]);
+      setCurrentChatId(null);
+    }
+  }, [username]);
 
   const loadChat = (chatId) => {
     const chat = chatHistory.find(c => c.id === chatId);
@@ -99,20 +148,6 @@ const Chatbot = ({ username, seoReport }) => {
     }
   };
 
-  const updateCurrentChat = (newMessages) => {
-    setChatHistory(prev => 
-      (prev || []).map(chat => 
-        chat.id === currentChatId 
-          ? { 
-              ...chat, 
-              messages: newMessages,
-              name: generateChatName(newMessages)
-            }
-          : chat
-      )
-    );
-  };
-
   const handleOpen = () => {
     setIsAnimating(true);
     setOpen(true);
@@ -122,21 +157,32 @@ const Chatbot = ({ username, seoReport }) => {
       setIsAnimating(false);
     }, 50);
     
-    
-    if (!messages || messages.length === 0) {
+    if ((!messages || messages.length === 0) && !welcomeShown) {
+      setWelcomeShown(true);
+      const welcomeText = `Hi ${username}, I'm Twinkle, your AI SEO assistant. How can I help you today?`;
       
-      const welcomeText = "Hi, I'm Twinkle, your AI SEO assistant. How can I help you today?";
-      const welcomeMsg = { sender: 'bot', text: '', isTyping: true };
-      setMessages([welcomeMsg]);
-      updateCurrentChat([welcomeMsg]);
-      
+      const initialMsg = { sender: 'bot', text: '', isTyping: true };
+      setMessages([initialMsg]);
       
       setTimeout(() => {
-        typeResponse(welcomeText, (text) => {
-          setMessages([{ sender: 'bot', text, isTyping: false }]);
-          updateCurrentChat([{ sender: 'bot', text, isTyping: false }]);
-        });
-      }, 300); 
+        const animateWelcomeMessage = async () => {
+          const words = welcomeText.split(' ');
+          let typedText = '';
+          
+          for (let i = 0; i < words.length; i++) {
+            typedText += (i > 0 ? ' ' : '') + words[i];
+            const typingMsg = { sender: 'bot', text: typedText, isTyping: true };
+            setMessages([typingMsg]);
+            
+            await new Promise(resolve => setTimeout(resolve, 40 + Math.random() * 40));
+          }
+          
+          const finalMsg = { sender: 'bot', text: welcomeText, isTyping: false };
+          setMessages([finalMsg]);
+        };
+        
+        animateWelcomeMessage();
+      }, 300);
     }
   };
 
@@ -148,21 +194,6 @@ const Chatbot = ({ username, seoReport }) => {
       setOpen(false);
       setIsAnimating(false);
     }, 200); 
-  };
-
-  const typeResponse = async (response, setTypingMessage) => {
-    const words = response.split(' ');
-    let typedText = '';
-    
-    for (let i = 0; i < words.length; i++) {
-      typedText += (i > 0 ? ' ' : '') + words[i];
-      setTypingMessage(typedText);
-      
-      
-      await new Promise(resolve => setTimeout(resolve, 50 + Math.random() * 100));
-    }
-    
-    return typedText;
   };
 
   const handleSend = async (e) => {
@@ -189,24 +220,35 @@ const Chatbot = ({ username, seoReport }) => {
       updateCurrentChat(messagesWithTyping);
       
       
-      const finalResponse = await typeResponse(res.data.reply, (text) => {
-        const updatedMessages = messagesWithTyping.map((msg, idx) => 
-          idx === messagesWithTyping.length - 1 && msg.isTyping 
-            ? { ...msg, text, isTyping: false }
+      const animateBotResponse = async () => {
+        const response = res.data.reply;
+        const words = response.split(' ');
+        let typedText = '';
+        
+        for (let i = 0; i < words.length; i++) {
+          typedText += (i > 0 ? ' ' : '') + words[i];
+          const typingMsg = { sender: 'bot', text: typedText, isTyping: true };
+          const updatedMessages = messagesWithTyping.map((msg, idx) => 
+            idx === messagesWithTyping.length - 1 
+              ? typingMsg
+              : msg
+          );
+          setMessages(updatedMessages);
+          updateCurrentChat(updatedMessages);
+          await new Promise(resolve => setTimeout(resolve, 40 + Math.random() * 40));
+        }
+        
+        const finalMsg = { sender: 'bot', text: response, isTyping: false };
+        const finalMessages = messagesWithTyping.map((msg, idx) => 
+          idx === messagesWithTyping.length - 1 
+            ? finalMsg
             : msg
         );
-        setMessages(updatedMessages);
-        updateCurrentChat(updatedMessages);
-      });
+        setMessages(finalMessages);
+        updateCurrentChat(finalMessages);
+      };
       
-      
-      const finalMessages = messagesWithTyping.map((msg, idx) => 
-        idx === messagesWithTyping.length - 1 && msg.isTyping 
-          ? { ...msg, text: finalResponse, isTyping: false }
-          : msg
-      );
-      setMessages(finalMessages);
-      updateCurrentChat(finalMessages);
+      animateBotResponse();
       
     } catch (err) {
       const errorMessage = { sender: 'bot', text: 'Sorry, Twinkle is having trouble responding right now.' };

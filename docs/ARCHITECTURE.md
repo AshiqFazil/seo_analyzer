@@ -19,36 +19,8 @@ The SEO Analyzer is a full-stack web application built with Flask (backend) and 
                        │                 │
                        │  - Users        │
                        │  - Analyses     │
-                       │  - Chat History │
+                       │  - Local Storage│
                        └─────────────────┘
-```
-
-## Component Architecture
-
-### Frontend (React)
-```
-frontend/src/
-├── components/
-│   ├── Login.js          # User authentication and registration
-│   ├── Dashboard.js      # Main application interface
-│   ├── SEOResults.js     # SEO analysis results display
-│   └── Chatbot.js        # AI chatbot interface
-├── utils/
-│   └── api.js           # API communication utilities
-├── App.js               # Main React application
-└── App.css              # Global styles and animations
-```
-
-### Backend (Flask)
-```
-backend/
-├── app.py               # Main Flask application with routes
-├── database.py          # SQLite database models and setup
-├── seo_analyzer.py      # Core SEO analysis logic
-├── gemini_integration.py # Gemini AI for SEO suggestions
-├── gemini_chatbot.py    # AI chatbot implementation
-├── requirements.txt     # Python dependencies
-└── instance/           # SQLite database files
 ```
 
 ## Component Architecture
@@ -123,17 +95,28 @@ CREATE TABLE analyses (
 );
 ```
 
-### Chat History Table
-```sql
-CREATE TABLE chat_history (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    user_id INTEGER NOT NULL,
-    message TEXT NOT NULL,
-    response TEXT NOT NULL,
-    tokens_used INTEGER,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users (id)
-);
+### Chat History Storage
+Chat history is stored locally in the browser using localStorage for each user. This provides:
+- **User-specific storage**: Each user's chat history is isolated
+- **Persistent sessions**: Chat history persists across browser sessions
+- **No server storage**: Reduces database complexity and storage requirements
+- **Privacy**: Chat data stays on the user's device
+
+**LocalStorage Structure:**
+```javascript
+// Key format: chat_history_${username}
+// Value: JSON array of chat objects
+[
+  {
+    id: "timestamp",
+    name: "Chat name",
+    messages: [
+      { sender: "user", text: "message" },
+      { sender: "bot", text: "response" }
+    ],
+    createdAt: "ISO date string"
+  }
+]
 ```
 
 ## Security Architecture

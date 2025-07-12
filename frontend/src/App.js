@@ -28,8 +28,15 @@ function App() {
   };
 
   const handleLogout = () => {
+    
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    
+    
+    if (user && user.username) {
+      localStorage.removeItem(`chat_history_${user.username}`);
+    }
+    
     setIsAuthenticated(false);
     setUser(null);
   };

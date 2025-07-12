@@ -110,10 +110,11 @@ Send a message to the Twinkle chatbot.
 **Response:**
 ```json
 {
-  "response": "AI-generated response with HTML formatting",
-  "tokens_used": 150
+  "response": "AI-generated response with HTML formatting"
 }
 ```
+
+**Note:** Chat history is managed client-side using localStorage for each user. The API only handles individual message exchanges.
 
 ### User Data
 
@@ -190,6 +191,6 @@ Get user's analysis history.
 - Chatbot messages are limited to 50 messages per hour per user
 
 ## Token Usage
-- Each chatbot interaction tracks token usage
-- Token usage is displayed in the response
-- Monitor usage to stay within API limits 
+- Each chatbot interaction uses Gemini AI tokens
+- Monitor usage to stay within API limits
+- Consider implementing rate limiting for production use 

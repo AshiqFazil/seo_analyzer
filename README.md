@@ -43,6 +43,7 @@
 - **Context-Aware Responses** - Understands your SEO reports and provides specific advice
 - **Beautiful UI** - 3D styled chat interface with smooth animations
 - **Formatted Responses** - HTML formatting with bold text and bullet points
+- **Animated Typing** - Realistic typing animation for all responses
 
 ### 🔐 Security & User Management
 - **JWT Authentication** - Secure user registration and login
@@ -54,7 +55,6 @@
 - **User Accounts** - Secure user registration and profile management
 - **Analysis History** - Store and retrieve previous SEO analyses
 - **Data Persistence** - SQLite database for reliable data storage
-- **User Sessions** - Track user activity and analysis history
 
 ### 📱 User Experience
 - **Responsive Design** - Works perfectly on desktop and mobile
@@ -216,7 +216,7 @@ npm start
 ### Usage
 1. Click the chat icon in the bottom-right corner
 2. Ask SEO-related questions
-3. Get instant, formatted responses
+3. Get instant, animated responses
 4. Receive actionable advice
 
 ### Example Questions
