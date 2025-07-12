@@ -13,4 +13,4 @@ backend/instance/
 frontend/node_modules/
 .vscode/
 .DS_Store
-"start_app.bat" 
+start_app.bat
