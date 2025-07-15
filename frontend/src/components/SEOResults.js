@@ -81,7 +81,6 @@ const SEOResults = ({ results }) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
     >
-      {}
       <motion.div 
         className="seo-score-card"
         initial={{ scale: 0.9 }}
@@ -97,9 +96,7 @@ const SEOResults = ({ results }) => {
         </div>
       </motion.div>
 
-      {}
       <div className="results-grid">
-        {}
         <motion.div 
           className="result-card"
           initial={{ opacity: 0, x: -20 }}
@@ -126,7 +123,6 @@ const SEOResults = ({ results }) => {
           </div>
         </motion.div>
 
-        {}
         <motion.div 
           className="result-card"
           initial={{ opacity: 0, x: 20 }}
@@ -153,7 +149,6 @@ const SEOResults = ({ results }) => {
           </div>
         </motion.div>
 
-        {}
         <motion.div 
           className="result-card"
           initial={{ opacity: 0, x: -20 }}
@@ -181,7 +176,6 @@ const SEOResults = ({ results }) => {
           </div>
         </motion.div>
 
-        {}
         <motion.div 
           className="result-card"
           initial={{ opacity: 0, x: 20 }}
@@ -209,7 +203,6 @@ const SEOResults = ({ results }) => {
           </div>
         </motion.div>
 
-        {}
         <motion.div 
           className="result-card"
           initial={{ opacity: 0, x: -20 }}
@@ -237,7 +230,6 @@ const SEOResults = ({ results }) => {
           </div>
         </motion.div>
 
-        {}
         <motion.div 
           className="result-card"
           initial={{ opacity: 0, x: 20 }}
@@ -266,7 +258,6 @@ const SEOResults = ({ results }) => {
         </motion.div>
       </div>
 
-      {}
       <motion.div 
         className="analysis-section"
         initial={{ opacity: 0, y: 30 }}
@@ -283,7 +274,6 @@ const SEOResults = ({ results }) => {
         </div>
       </motion.div>
 
-      {}
       {results.ai_suggestions && (
         <motion.div 
           className="analysis-section"
@@ -297,7 +287,6 @@ const SEOResults = ({ results }) => {
             AI-Powered Suggestions
           </h2>
           
-          {}
           <div style={{ marginBottom: '30px' }}>
             <h3 style={{ color: '#333', marginBottom: '15px' }}>
               <i className="fas fa-exclamation-circle" style={{ marginRight: '8px', color: '#ef4444' }}></i>
@@ -347,7 +336,6 @@ const SEOResults = ({ results }) => {
             </div>
           </div>
 
-          {}
           <div style={{ marginBottom: '20px' }}>
             <h3 style={{ color: '#333', marginBottom: '15px' }}>
               <i className="fas fa-zap" style={{ marginRight: '8px', color: '#10b981' }}></i>
@@ -379,7 +367,6 @@ const SEOResults = ({ results }) => {
             </div>
           </div>
 
-          {}
           <motion.div 
             style={{ 
               background: '#f8f9fa', 
@@ -402,7 +389,6 @@ const SEOResults = ({ results }) => {
         </motion.div>
       )}
 
-      {}
       <motion.div 
         className="analysis-section"
         initial={{ opacity: 0, y: 30 }}

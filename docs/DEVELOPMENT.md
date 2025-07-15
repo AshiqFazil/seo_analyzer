@@ -12,7 +12,7 @@
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/seo_analyzer.git
+git clone https://github.com/ashiqfazil/seo_analyzer.git
 cd seo_analyzer
 ```
 

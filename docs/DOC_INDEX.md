@@ -8,6 +8,7 @@ Welcome to the comprehensive documentation for the GenAI-powered SEO Analyzer pr
 - **[Project README](../README.md)** - Main project overview, setup, and usage guide
 - **[API Documentation](API.md)** - Complete API reference with all endpoints
 - **[System Architecture](ARCHITECTURE.md)** - Detailed system design and component architecture
+- **[Data Security](DATA_SECURITY.md)** - Security practices and data protection measures
 - **[Development Guide](DEVELOPMENT.md)** - Development setup, coding standards, and contribution guidelines
 
 ### User Documentation
@@ -35,7 +36,8 @@ docs/
 ├── ARCHITECTURE.md    # System design and architecture
 ├── DEVELOPMENT.md     # Development guide and standards
 ├── USER_GUIDE.md      # User manual and troubleshooting
-└── DEPLOYMENT.md      # Production deployment guide
+├── DEPLOYMENT.md      # Production deployment guide
+└── data_security.md   # Data security and protection practices
 ```
 
 ##  Documentation Goals

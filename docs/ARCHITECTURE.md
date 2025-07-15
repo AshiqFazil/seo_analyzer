@@ -8,12 +8,13 @@ The SEO Analyzer is a full-stack web application built with Flask (backend) and 
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
 │   React Frontend│    │   Flask Backend │    │  Google Gemini  │
 │                 │    │                 │    │      API        │
-│  - Login/Dashboard│◄──►│  - REST API     │◄──►│  - SEO Analysis │
+│  - Login/       |    |                 |    |                 |
+|   Dashboard     |◄──►│  - REST API     │◄──►│  - SEO Analysis │
 │  - SEOResults   │    │  - JWT Auth     │    │  - Chatbot      │
 │  - Chatbot UI   │    │  - SQLite DB    │    │  - Token Usage  │
 └─────────────────┘    └─────────────────┘    └─────────────────┘
-                              │
-                              ▼
+                               │
+                               ▼
                        ┌─────────────────┐
                        │   SQLite DB     │
                        │                 │

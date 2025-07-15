@@ -268,9 +268,9 @@ const Dashboard = ({ user, onLogout }) => {
     <div className="dashboard" style={{ 
       minHeight: '100vh',
       background: 'var(--primary-gradient)',
-      position: 'relative'
+      position: 'relative'  
     }}>
-      {/* Floating Chatbot Widget */}
+      {}
       <Chatbot username={user.username} seoReport={results} />
       <header className="dashboard-header">
         <div className="header-content">
