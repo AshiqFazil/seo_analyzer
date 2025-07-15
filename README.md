@@ -101,12 +101,6 @@
 git clone https://github.com/yourusername/seo_analyzer.git
 cd seo_analyzer
 
-# Run the setup script
-./start_app.bat  # Windows
-# OR
-./start_app.sh   # Linux/Mac
-```
-
 ---
 
 ## 🔧 Installation
