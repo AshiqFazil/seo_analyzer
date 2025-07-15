@@ -77,7 +77,7 @@
 
 ### Frontend
 - **React 18.0+** - Modern UI library
-- **Axios** - HTTP client for API communication
+- **fetch** - HTTP client for API communication
 - **Chart.js** - Data visualization and analytics
 - **CSS3** - Styling and animations
 
