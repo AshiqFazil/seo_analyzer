@@ -98,18 +98,10 @@
 ### One-Command Setup
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/seo_analyzer.git
+git clone https://github.com/ashiqfazil/seo_analyzer.git
 cd seo_analyzer
 
----
 
-## 🔧 Installation
-
-### 1. Clone Repository
-```bash
-git clone https://github.com/yourusername/seo_analyzer.git
-cd seo_analyzer
-```
 
 ### 2. Backend Setup
 ```bash
