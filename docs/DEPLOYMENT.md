@@ -18,20 +18,6 @@ This guide covers deploying the SEO Analyzer application to production environme
 
 ## Prerequisites
 
-### System Requirements
-
-**Minimum Requirements:**
-- **CPU**: 2 cores, 2.0 GHz
-- **RAM**: 4GB minimum, 8GB recommended
-- **Storage**: 20GB available space
-- **OS**: Ubuntu 20.04+, CentOS 7+, or Windows Server 2019+
-
-**Recommended Requirements:**
-- **CPU**: 4 cores, 3.0 GHz
-- **RAM**: 16GB
-- **Storage**: 100GB SSD
-- **Network**: 100 Mbps bandwidth
-
 ### Software Dependencies
 
 **Backend Requirements:**
